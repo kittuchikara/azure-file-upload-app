@@ -1,14 +1,10 @@
 from flask import Flask, render_template, request
 from azure.storage.blob import BlobServiceClient
-import os
-from dotenv import load_dotenv
-
-load_dotenv()
-
+from config import get_secret
 
 app = Flask(__name__)
 
-STORAGE_CONNECTION = os.getenv("STORAGE_CONNECTION")
+STORAGE_CONNECTION = get_secret("StorageConnectionString")
 
 CONTAINER_NAME = "uploads"
 
